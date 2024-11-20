@@ -1,5 +1,6 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 #![deny(clippy::std_instead_of_core)]
+#![doc = include_str!("../README.md")]
 
 #[cfg(all(feature = "std", feature = "libm"))]
 compile_error!("The `std` and `libm` features may not both be enabled simultaneously.");
