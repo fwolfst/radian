@@ -1,0 +1,18 @@
+[package]
+name = "radian"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = ["std"]
+std = []
+libm = ["dep:libm"]
+ufmt = ["dep:ufmt", "dep:ufmt_float"]
+
+[dependencies]
+libm = { version = "0.2", optional = true }
+ufmt = { version = "0.2.0", optional = true }
+ufmt_float = { version = "0.2.0", optional = true }
+
+[dev-dependencies]
+approx = "0.5.1"
