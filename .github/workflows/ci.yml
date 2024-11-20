@@ -26,8 +26,7 @@ jobs:
         with:
           toolchain: stable
       - uses: Leafwing-Studios/cargo-cache@v2
-      - name: Install cargo-all-features
-        run: cargo install cargo-all-features
+      - uses: taiki-e/install-action@cargo-hack
       - name: Cargo clippy
         run: cargo hack clippy --feature-powerset --mutually-exclusive-features std,libm -- -D warnings
 
