@@ -4,7 +4,7 @@
 #[cfg(all(feature = "std", feature = "libm"))]
 compile_error!("The `std` and `libm` features may not both be enabled simultaneously.");
 
-use core::f64::consts::PI;
+use core::{f64::consts::PI, fmt::Display};
 
 mod ops;
 
@@ -153,6 +153,12 @@ impl Angle {
         return (self.value.cos(), self.value.sin());
         #[cfg(feature = "libm")]
         return (libm::cos(self.value), libm::sin(self.value));
+    }
+}
+
+impl Display for Angle {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        write!(f, "{} radians", self.value)
     }
 }
 
