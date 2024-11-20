@@ -17,9 +17,9 @@ The `std` feature is enabled by default. This uses the standard library implment
 
 ### `libm`
 
-The `libm` feature can be enabled instead of `std`. This will use the [`libm` crate](https://crates.io/crates/libm) for math functions like sin and cos.
+The `libm` feature can be enabled instead of `std`. This will use the [`libm`](https://crates.io/crates/libm) crate for math functions like sin and cos.
 
 ### `ufmt`
 
-The `ufmt` feature will add the `ufmt::uDisplay` implmentation for `Angle`.
+The `ufmt` feature will add the [`ufmt::uDisplay`](https://docs.rs/ufmt/latest/ufmt/trait.uDisplay.html) implmentation for `Angle`.
 
