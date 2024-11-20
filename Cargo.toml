@@ -2,6 +2,14 @@
 name = "radian"
 version = "0.1.0"
 edition = "2021"
+license = "MIT OR Apache-2.0"
+description = " A normalized angle type "
+repository = "https://github.com/LiamGallagher737/radian"
+readme = "README.md"
+categories = ["no-std", "no-std::no-alloc", "mathematics"]
+keywords = ["math", "angles", "trigonometry", "no_std"]
+authors = ["Liam Gallagher <liam@liamgallagher.dev>"]
+exclude = [".github", "flake.*"]
 
 [features]
 default = ["std"]
@@ -11,8 +19,8 @@ ufmt = ["dep:ufmt", "dep:ufmt_float"]
 
 [dependencies]
 libm = { version = "0.2", optional = true }
-ufmt = { version = "0.2.0", optional = true }
-ufmt_float = { version = "0.2.0", optional = true }
+ufmt = { version = "0.2", optional = true }
+ufmt_float = { version = "0.2", optional = true }
 
 [dev-dependencies]
-approx = "0.5.1"
+approx = "0.5"
