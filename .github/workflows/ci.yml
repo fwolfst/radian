@@ -13,8 +13,9 @@ jobs:
         with:
           toolchain: stable
       - uses: Leafwing-Studios/cargo-cache@v2
+      - uses: taiki-e/install-action@cargo-hack
       - name: Cargo test
-        run: cargo test --all --all-features
+        run: cargo hack test --feature-powerset --mutually-exclusive-features std,libm
 
   cargo-clippy:
     name: Run Clippy
@@ -25,8 +26,10 @@ jobs:
         with:
           toolchain: stable
       - uses: Leafwing-Studios/cargo-cache@v2
+      - name: Install cargo-all-features
+        run: cargo install cargo-all-features
       - name: Cargo clippy
-        run: cargo clippy --all --all-features -- -D warnings
+        run: cargo hack clippy --feature-powerset --mutually-exclusive-features std,libm -- -D warnings
 
   cargo-fmt:
     name: Check Formatting
