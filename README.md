@@ -5,7 +5,7 @@
 A normalized angle type
 
 [![crates.io](https://img.shields.io/crates/v/radian?style=for-the-badge)](https://crates.io/crates/radian)
-[![docs.rs](https://img.shields.io/docsrs/radian?style=for-the-badge)](https://docs.rs/radian/latest/radian)
+[![docs.rs](https://img.shields.io/docsrs/radian?style=for-the-badge)](https://docs.rs/radian/latest/radian/struct.Angle.html)
 
 </div>
 
