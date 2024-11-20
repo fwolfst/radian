@@ -98,7 +98,7 @@ impl Angle {
     /// # use core::f64::consts::PI;
     /// let a = Angle::new(-PI);
     /// let b = Angle::new(PI / 2.0);
-    /// assert_eq!(a.distance(&b).radians(), PI / 2.0);
+    /// assert_eq!(a.abs_distance(&b).radians(), PI / 2.0);
     /// ```
     #[inline(always)]
     pub fn abs_distance(&self, other: &Self) -> Self {
