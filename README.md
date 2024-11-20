@@ -1,63 +1,25 @@
 <div align="center">
 
-# fnn
+# radian
 
- A simple Feedforward Neural Network library for Rust
+A normalized angle type
 
-[![crates.io](https://img.shields.io/crates/v/fnn?style=for-the-badge)](https://crates.io/crates/fnn)
-[![docs.rs](https://img.shields.io/docsrs/fnn?style=for-the-badge)](https://docs.rs/fnn/latest/fnn)
+[![crates.io](https://img.shields.io/crates/v/radian?style=for-the-badge)](https://crates.io/crates/radian)
+[![docs.rs](https://img.shields.io/docsrs/radian?style=for-the-badge)](https://docs.rs/radian/latest/radian)
 
 </div>
 
-## Features
+## Cargo Features
 
-- First class support for `no_std` environments
-- Simplicity
-- Deterministic
-- It works
+### `std`
 
-## Usage
+The `std` feature is enabled by default. This uses the standard library implmentation of math functions like sin and cos.
 
-To create a new neural network you can use the following. This creates a network that takes two inputs, has two hidden neurons and gives one output.
+### `libm`
 
-```rs
-let mut nn = FeedForward::<Sigmoid, 2, 2, 1>::new();
-```
+The `libm` feature can be enabled instead of `std`. This will use the [`libm` crate](https://crates.io/crates/libm) for math functions like sin and cos.
 
-Then given some training data like this:
+### `ufmt`
 
-```rs
-let training_data = [
-    ([0.0, 0.0], [0.0]),
-    ([0.0, 1.0], [1.0]),
-    ([1.0, 0.0], [1.0]),
-    ([1.0, 1.0], [0.0]),
-];
-```
+The `ufmt` feature will add the `ufmt::uDisplay` implmentation for `Angle`.
 
-You can train the network a few times:
-
-```rs
-for _ in 0..50_000 {
-    for (input, target) in &training_data {
-        let input = SVector::from_column_slice(input);
-        let target = SVector::from_column_slice(target);
-        nn.train(&input, &target, 0.1);
-    }
-}
-```
-
-Then get a prediction:
-
-```rs
-let output = nn.forward(&SVector::from_column_slice(&[0.0, 1.0]));
-```
-
-The [full example](examples/predict_xor.rs) can produce decently accurate results with these parameters:
-
-```rs
-Input: [0.0, 0.0], Output: 0.015919467, Expected: 0, Accuracy: 98.40805%
-Input: [0.0, 1.0], Output: 0.9832184, Expected: 1, Accuracy: 98.32184%
-Input: [1.0, 0.0], Output: 0.98321366, Expected: 1, Accuracy: 98.321365%
-Input: [1.0, 1.0], Output: 0.020730482, Expected: 0, Accuracy: 97.92695%
-```
