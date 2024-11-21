@@ -250,9 +250,11 @@ impl Angle {
     #[cfg(any(feature = "std", feature = "libm"))]
     pub fn from_unit_vector(x: f64, y: f64) -> Angle {
         #[cfg(feature = "std")]
-        return Angle::new(y.atan2(x));
+        return Angle { value: y.atan2(x) };
         #[cfg(feature = "libm")]
-        return Angle::new(libm::atan2(y, x));
+        return Angle {
+            value: libm::atan2(y, x),
+        };
     }
 }
 
@@ -313,6 +315,14 @@ mod tests {
         #[test]
         fn prop_test_below_range(angle in ..PI) {
             assert!(Angle::new(angle).radians() > angle);
+        }
+
+        #[test]
+        #[cfg(any(feature = "std", feature = "libm"))]
+        fn prop_test_from_unit_vector(x in -1000.0..1000.0, y in -1000.0..1000.0) {
+            let angle = Angle::from_unit_vector(x, y);
+            assert!(-PI <= angle.radians());
+            assert!(angle.radians() <= PI);
         }
     }
 }
