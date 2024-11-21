@@ -276,6 +276,7 @@ impl ufmt::uDisplay for Angle {
 mod tests {
     use super::Angle;
     use core::f64::consts::PI;
+    use proptest::prelude::*;
 
     #[test]
     fn test_in_range() {
@@ -296,5 +297,22 @@ mod tests {
     fn test_math_ops() {
         assert_eq!((Angle::PI - Angle::PI / 2.0).radians(), PI / 2.0);
         assert_eq!((Angle::PI * 2.0).radians(), 0.0);
+    }
+
+    proptest! {
+        #[test]
+        fn prop_test_in_range(angle in -PI..=PI) {
+            assert_eq!(Angle::new(angle).radians(), angle);
+        }
+
+        #[test]
+        fn prop_test_above_range(angle in (PI + f64::EPSILON)..) {
+            assert!(Angle::new(angle).radians() < angle);
+        }
+
+        #[test]
+        fn prop_test_below_range(angle in ..PI) {
+            assert!(Angle::new(angle).radians() > angle);
+        }
     }
 }
