@@ -12,15 +12,15 @@ authors = ["Liam Gallagher <liam@liamgallagher.dev>"]
 exclude = [".github", "flake.*"]
 
 [features]
-default = ["std"]
+default = ["std", "ufmt"]
 std = []
 libm = ["dep:libm"]
-ufmt = ["dep:ufmt", "dep:ufmt_float"]
+ufmt = ["dep:ufmt", "dep:ufloat"]
 
 [dependencies]
 libm = { version = "0.2", optional = true }
 ufmt = { version = "0.2", optional = true }
-ufmt_float = { version = "0.2", optional = true }
+ufloat = { version = "0.1", optional = true }
 
 [dev-dependencies]
 approx = "0.5"

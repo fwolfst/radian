@@ -270,7 +270,7 @@ impl ufmt::uDisplay for Angle {
     where
         W: ufmt::uWrite + ?Sized,
     {
-        ufmt::uwrite!(f, "{} radians", ufmt_float::uFmt_f64::Five(self.value))
+        ufmt::uwrite!(f, "{} radians", ufloat::Uf64(self.value, 4))
     }
 }
 
