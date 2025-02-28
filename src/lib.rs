@@ -9,7 +9,8 @@ use core::{f64::consts::PI, fmt::Display};
 
 mod ops;
 
-/// A wrapper around a `f64` angle that is guaranteed to always be normalized.
+/// A wrapper around a `f64` angle in radians that is guaranteed to always be
+/// normalized between -π and +π .
 #[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
 pub struct Angle {
     value: f64,

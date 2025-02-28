@@ -23,3 +23,6 @@ The `libm` feature can be enabled instead of `std`. This will use the [`libm`](h
 
 The `ufmt` feature will add the [`ufmt::uDisplay`](https://docs.rs/ufmt/latest/ufmt/trait.uDisplay.html) implmentation for `Angle`.
 
+## License
+
+Released under the [MIT](./LICENSE-MIT) or [Apache 2.0](./LICENSE-APACHE) license (your choice). Copyright 2025 Liam Gallagher.
